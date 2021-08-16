@@ -26,6 +26,7 @@ public class Aerodynamics : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.AddForce(new Vector3(0, 0, 100), ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -47,8 +48,8 @@ public class Aerodynamics : MonoBehaviour
         lCEMag = Mathf.Sqrt((Mathf.Pow(rVelocity.x, 2)) + (Mathf.Pow(rVelocity.y, 2)) + (Mathf.Pow(rVelocity.z, 2)));
         lift = (lCE * (density * Mathf.Pow(velocity, 2f) / 2) * area) / 1000;
         rigidbody.AddForce(new Vector3(0, lift, 0));
-        line = transform.TransformPoint(new Vector3(rVelocity.x, rVelocity.y, -drag));
-        //line = transform.TransformPoint(new Vector3(rigidbody.velocity.x, rigidbody.velocity.x, -lift));
+        //line = transform.TransformPoint(new Vector3(rVelocity.x, rVelocity.y, -drag));
+        line = transform.TransformPoint(new Vector3(rigidbody.velocity.x, rigidbody.velocity.x, -lift));
         //Debug.Log("Lift:" + lift);
         Debug.Log(line);
     }
